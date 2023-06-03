@@ -3,11 +3,11 @@
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.openqa.selenium.devtools.v112.page.Page.navigate;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,6 +53,11 @@ public class SeleniumTest1Test {
         driver.manage().window().setSize(new Dimension(1552, 840));
         driver.findElement(By.linkText("대학/대학원")).click();
         driver.findElement(By.linkText("컴퓨터공학과")).click();
+        WebElement profdiv = driver.findElement(By.xpath("//strong[contains(text(), '김한규')]/ancestor::div[@class='listbox']"));
+        WebElement more = profdiv.findElement(By.tagName("a"));
+        more.click();
+        Thread.sleep(2000);
+        
         driver.findElement(By.linkText("대학소개")).click();
 
         driver.navigate().to("https://www.google.com");
